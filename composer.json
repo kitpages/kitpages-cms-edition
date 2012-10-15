@@ -1,6 +1,15 @@
 {
     "name": "kitpages/kitpages-cms-edition",
     "description": "The \"Kitpages Cms Edition\" distribution",
+    "keywords": ["cms"],
+    "homepage": "https://github.com/kitpages/kitpages-cms-edition",
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "Philippe Le Van",
+            "homepage": "https://twitter.com/#!/plv"
+        }
+    ],
     "autoload": {
         "psr-0": { "": "src/" }
     },

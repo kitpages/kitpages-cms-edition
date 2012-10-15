@@ -23,7 +23,7 @@ A backup of a site demo is also available
 
 a) Install the Vendor Libraries
     * Install Composer and run the following command:
-        php composer.phar create-project symfony/kitpages-cms-edition path/
+        php composer.phar create-project kitpages/kitpages-cms-edition path/ v2.1.0
 
 b) Modify parameters.ini
 

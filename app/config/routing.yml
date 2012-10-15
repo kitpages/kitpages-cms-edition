@@ -1,0 +1,23 @@
+KitpagesRedirectBundle:
+    resource: "@KitpagesRedirectBundle/Resources/config/routing.yml"
+    prefix:   /cms/redirect
+app_kit_site:
+    resource: "@AppSiteBundle/Resources/config/routing.yml"
+
+kitpages_cms:
+    resource: "@KitpagesCmsBundle/Resources/config/routing.yml"
+    prefix: "cms"
+
+kitpages_file:
+    resource: "@KitpagesFileBundle/Resources/config/routing.yml"
+    prefix: "file"
+
+app_kit_user:
+    resource: "@AppUserBundle/Resources/config/routing.yml"
+    prefix: "user"
+
+kitpages_cms_page_view_lang:
+    pattern:  /{lang}/cms/{id}/{urlTitle}
+    defaults: { _controller: KitpagesCmsBundle:Page:view, lang: en }
+    requirements:
+        id: \d+

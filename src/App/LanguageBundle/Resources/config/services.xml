@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <parameters>
+        <parameter key="app_language.manager.class">App\LanguageBundle\Model\LanguageManager</parameter>
+        <parameter key="translation.loader.csv.class">Symfony\Component\Translation\Loader\CsvFileLoader</parameter>
+    </parameters>
+
+    <services>
+        <service id="app_language.manager" class="%app_language.manager.class%">
+            <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"  />
+            <argument type="service" id="session"/>
+            <argument type="service" id="security.context"/>
+            <argument>%app_language.locale_list%</argument>
+            <argument>%locale%</argument>
+        </service>
+        <service id="translation.loader.csv" class="%translation.loader.csv.class%">
+            <tag name="translation.loader" alias="csv" />
+        </service>
+
+    </services>
+</container>

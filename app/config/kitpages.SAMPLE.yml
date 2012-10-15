@@ -1,0 +1,72 @@
+kitpages_cms:
+    block:
+        template:
+            template_list:
+                standard:
+                    class: 'App\SiteBundle\Form\Block\Standard'
+                    name: 'Standard'
+                    twig: 'AppSiteBundle:Block:form/standard.html.twig'
+                news:
+                    class: 'App\SiteBundle\Form\Block\News'
+                    name: 'Actualité'
+                    twig: 'AppSiteBundle:Block:form/news.html.twig'
+
+        renderer:
+            standard:
+                default:
+                    type: 'twig'
+                    twig: 'AppSiteBundle:Block:renderer/standard/default.html.twig'
+            news:
+                default:
+                    type: 'twig'
+                    twig: 'AppSiteBundle:Block:renderer/news/default.html.twig'
+                news_list:
+                    type: 'twig'
+                    twig: 'AppSiteBundle:Block:renderer/news/news-list.html.twig'
+    page:
+        layout_list:
+            default:
+                renderer_twig: 'AppSiteBundle:Page:template/default.html.twig'
+                data_form_class: '\App\SiteBundle\Form\Page\PageLayoutEditDefault'
+                data_form_twig: 'AppSiteBundle:Page:form/page-layout-edit-default.html.twig'
+                zone_list:
+                    column:
+                        renderer: 'default'
+                        authorized_block_template_list : ['standard']
+                    main:
+                        renderer: 'default'
+                        authorized_block_template_list : ['standard']
+            home:
+                renderer_twig: 'AppSiteBundle:Page:template/home.html.twig'
+                data_form_class: '\App\SiteBundle\Form\Page\PageLayoutEditDefault'
+                data_form_twig: 'AppSiteBundle:Page:form/page-layout-edit-default.html.twig'
+                zone_list:
+                    column:
+                        renderer: 'default'
+                        authorized_block_template_list : ['standard']
+                    edito:
+                        renderer: 'default'
+                        authorized_block_template_list : ['standard']
+        default_twig: '::base.html.twig'
+
+kitpages_file:
+    tmp_dir: %kernel.root_dir%/data/tmp
+    type_list:
+        image:
+            resize:
+                form: 'kit_file.image.resize.form'
+                form_twig: 'KitpagesFileBundle:ActionOnFile:Image/Resize/form.html.twig'
+                handler_form: 'kit_file.image.resize.form.handler'
+                library: 'imagine.gd'
+
+kitpages_file_system:
+    file_system_list:
+        kitpagesFile:
+#            amazon_s3:
+#                bucket_name: %kitpagesFile_amazons3_bucketname%
+#                key: %kitpagesFile_amazons3_key%
+#                secret_key: %kitpagesFile_amazons3_secretkey%
+            local:
+                directory_public: %kernel.root_dir%/../web
+                directory_private: %kernel.root_dir%
+                base_url: %base_url%

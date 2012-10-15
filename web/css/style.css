@@ -1,0 +1,258 @@
+a {
+    color: #C6012C;
+    text-decoration: none;
+}
+
+/*
+* Header
+*/
+.app-header-intro{
+    float:left;
+    width:600px;
+    text-align:center;
+}
+
+
+.app-header-connection {
+    float:right;
+    line-height:43px;
+}
+
+/* logo */
+
+.app-logo-kitpages{
+    float:right;
+}
+
+a img{
+    border:none;
+}
+
+.app-logo-cms{
+    float:left;
+    padding: 15px 20px 8px;
+    font-size: 20px;
+}
+.app-logo-cms a{ color: #c6012c; }
+
+
+
+/********************/
+
+.help-input-inline-style{
+    color: #808080;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.layout-inside-main h1{
+    margin-bottom:5px;
+    font-size:1.8em;
+    text-transform: uppercase;
+}
+
+.layout-main-column h2{
+    padding:5px;
+    font-size:1.4em;
+    text-transform: uppercase;
+    color:#FFFFFF;
+    font-weight:normal;
+}
+
+/**
+* home
+**/
+
+.layout-main-column > div {
+    border: 1px solid #535155;
+}
+
+.layout-home-edito .app-block-standard{
+    display: block;
+    width: 640px;
+    padding: 8px;
+    margin-bottom:15px;
+}
+
+
+.layout-home-intro{
+    margin:0px 0px 15px 0px;
+    padding:10px;
+    background-color: #3b3a3f;
+    border: 1px solid #535155;
+    color:#FFFFFF;
+    text-align: center;
+}
+
+/* contact form */
+
+div#ihqs_contact_contact_form textarea {
+    width: 400px;
+    height: 150px;
+    vertical-align: middle;
+    border: 1px solid #C8E4F6;
+}
+
+div#ihqs_contact_contact_form > div {
+    margin: 10px 0px;
+}
+
+#ihqs_contact_contact_form label {
+    display: inline-block;
+    height: 20px;
+    vertical-align: top;
+    width: 90px;
+}
+
+input:invalid, textarea:invalid {
+
+}
+
+
+/**
+ * Paginator
+ */
+.kit-cms-paginator {
+    clear:both;
+    text-align: center;
+}
+.kit-cms-paginator a {
+    display: inline-block;
+    margin: 2px;
+    width:18px;
+    height:18px;
+    border: 1px solid #535155;
+
+    text-decoration: none;
+    font-weight:bold;
+    color: #FFFFFF;
+    background-color:#403d45;
+}
+.ie7 .kit-cms-paginator a {
+    display: inline;
+}
+.kit-cms-paginator a:hover {
+    background-color: #9dc62a;
+    color: #FFF;
+}
+.kit-cms-paginator .kit-cms-paginator-current {
+    display: inline-block;
+    margin: 2px;
+    width:18px;
+    height:18px;
+    font-weight:bold;
+    color: #FFFFFF;
+    background-color: #9dc62a;
+}
+.ie7 .kit-cms-paginator .kit-cms-paginator-current {
+    display: inline;
+}
+
+.kit-cms-paginator .kit-cms-paginator-next a, .kit-cms-paginator .kit-cms-paginator-previous a{
+    width:30px;
+}
+
+/*
+* News
+*/
+.app-block-news a:hover{
+    text-decoration:none;
+}
+.layout-inside-main .app-block-news{
+    padding: 10px;
+    margin-bottom:10px;
+}
+
+.app-block-news h2 {
+    margin-bottom:5px;
+}
+
+.app-block-news h3 {
+    margin-bottom:5px;
+    text-transform: uppercase;
+}
+
+.layout-inside-main .app-news-img{
+    float:left;
+    padding-right:10px;
+}
+
+.app-news-date{
+    color:#999999;
+    text-align:right;
+    font-size:0.9em;
+}
+
+/*
+* connexion screen
+*/
+.app-user-connexion input {
+    border-radius: 3px 3px 3px 3px;
+    font-size: 0.9em;
+    height: 15px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 200px;
+}
+
+.app-user-connexion label {
+    display: inline-block;
+    width: 120px;
+}
+
+.app-user-connexion a {
+    padding-left: 10px;
+    background-image: url("style/arrow_small_right_green.png");
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    color: #000000;
+}
+.app-user-connexion a:hover {
+    text-decoration:none;
+
+}
+.app-user-connexion form input.submit {
+    font-size: 1em;
+    font-weight: bold;
+    height: 27px;
+    margin: 10px 0 20px 0px;
+    width: 126px;
+    color: #000000;
+}
+
+.app-user-connexion form input.submit:hover {
+    background-color: #3B3A3F;
+}
+
+.layout-footer a{
+    color: #C6012C;
+}
+
+
+/* modif for button add in the navigation */
+.kit-cms-navigation-footer .kit-cms-nav-button-add{
+    position:static;
+}
+
+/* other */
+
+.app-separator {
+    background-color: #E3E3E3;
+    height: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.democms-help {
+    background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 8px;
+}
+

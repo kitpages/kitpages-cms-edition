@@ -1,0 +1,16 @@
+web/bundles/
+web/data/*
+app/bootstrap.php.cache
+app/cache/*
+app/logs/*
+app/data/*
+app/sessions/sess_*
+build/
+vendor/
+app/config/parameters.ini
+app/config/kitpages.yml
+*~
+# IDE
+/nbproject/
+/.idea/
+/catalog.xml

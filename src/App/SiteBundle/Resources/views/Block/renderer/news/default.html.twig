@@ -1,0 +1,55 @@
+{% autoescape false %}
+<div class="app-block-standard app-block-news">
+    {% set img = data.media.mainImage.0.default|default('') %}
+    {% set imgPos = data.root.imagePosition|default('top') %}
+
+    {% if data.root.block_url|default('') %}<a href="{{data.root.block_url}}">{% endif %}
+    {% if data.root.title|default('') %}<h2>{{data.root.title}}</h2>{% endif %}
+    {% if data.root.block_url|default('') %}</a>{% endif %}
+    {% if data.root.date|default('') %}
+        <div class="app-news-date">{{data.root.date|kit_strftime("%d %B %Y") }}</div>
+    {% endif %}
+
+    {% if imgPos == "top" %}
+        {% if img %}
+            {% if data.root.block_url|default('') %}<a href="{{data.root.block_url}}">{% endif %}
+            <img class="app-block-img-{{imgPos}} app-block-img" src="{{img.url}}"/>
+            {% if data.root.block_url|default('') %}</a>{% endif %}
+        {% endif %}
+    {% endif %}
+    {% if imgPos == "center" %}
+        {% if img %}<div style="text-align: center;">
+            {% if data.root.block_url|default('') %}<a href="{{data.root.block_url}}">{% endif %}
+            <img class="app-block-img" src="{{img.url}}"/>
+            {% if data.root.block_url|default('') %}</a>{% endif %}
+            </div>
+        {% endif %}
+    {% endif %}
+
+
+    {% if (imgPos == "left") or (imgPos == "right") %}
+        {% if img %}
+            {% if data.root.block_url|default('') %}<a href="{{data.root.block_url}}">{% endif %}
+            <img class="app-block-img-{{imgPos}} app-block-img" src="{{img.url}}" style="display: block; float: {{imgPos}};"/>
+            {% if data.root.block_url|default('') %}</a>{% endif %}
+        {% endif %}
+    {% endif %}
+
+    {% if data.root.mainContent|default('') %}<div>{{data.root.mainContent}}</div>{%endif%}
+
+    {% if ( (imgPos == "left") or (imgPos == "right") ) and (img) %}
+        <div style="clear:{{imgPos}};"></div>
+    {% endif %}
+
+    {% if imgPos == "bottom" %}
+        {% if img %}
+            {% if data.root.block_url|default('') %}<a href="{{data.root.block_url}}">{% endif %}
+            <img class="app-block-img-{{imgPos}} app-block-img" src="{{img.url}}"/>
+            {% if data.root.block_url|default('') %}</a>{% endif %}
+        {% endif %}
+    {% endif %}
+
+
+</div>
+{% if data.root.html|default('') %}{{data.root.html}}{%endif%}
+{% endautoescape %}

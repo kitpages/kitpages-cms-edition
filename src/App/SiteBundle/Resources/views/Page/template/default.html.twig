@@ -1,0 +1,66 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<div class="layout-inside-column">
+    {% if (kitCmsPageData.page.level > 2 and kitCmsPageData.page.hasChildren) or (kitCmsPageData.page.level > 3) %}
+    <div class="app-navigation-level2 app-block-contextual">
+        <h3>Navigation</h3>
+        {% render 'KitpagesCmsBundle:Nav:widget' with {
+            'slug': kitCmsPageData.page.language|default(cms.currentLanguage) ~ '-main',
+            'cssClass': "",
+            'currentPageSlug':kitCmsPageData.page.slug|default(''),
+            'startDepth':2 ,
+            'endDepth':2}
+        %}
+    </div>
+    {%endif%}
+    {% render 'KitpagesCmsBundle:Page:widgetZone' with {'location_in_page': 'column', 'page':kitCmsPage} %}
+    <div class="app-block-contextual">
+        {% render 'KitpagesCmsBundle:Block:widget' with {'slug': languageManager.currentLanguage|default('en') ~ '-contextual'} %}
+    </div>
+</div>
+<div class="layout-inside-main">
+    <div class="app-date-author">
+        {% if kitCmsPageData.root.author|default('') %}
+        <span class="app-author">Par {{ kitCmsPageData.root.author }}</span>
+        {% endif %}
+        {% if kitCmsPageData.root.date|default('') %}
+        <span class="app-date">Dernière mise à jour : {{ kitCmsPageData.root.date|kit_strftime("%d %B %Y") }}</span>
+        {% endif %}
+    </div>
+    {%if kitCmsPageData.page.title|default('') %}
+    <h1>{{ kitCmsPageData.page.title}}</h1>
+    <div class="app-separator"></div>
+    {%endif%}
+    {% render 'KitpagesCmsBundle:Page:widgetZone' with {'location_in_page': 'main', 'page':kitCmsPage} %}
+
+    <!-- Comments -->
+    {% if kitCmsPageData.root.displayCommentForm|default('NO') == "YES" %}
+    <div class="app-comment-container">
+        <h2>Commentaires</h2>
+        <a class="app-comment-display-form">Ajouter un commentaire</a>
+        <div class="app-comment-form" style="display:none;">
+        {% render 'KitpagesUserGeneratedBundle:Comment:newPost' with {
+            'itemReference': 'page-cms-' ~ kitCmsPage.id,
+            'itemClass' : 'Page',
+            'itemId' : kitCmsPage.id,
+            'languageCode' : kitCmsPage.language|default(cms.currentLanguage),
+            'extra' : {"pageTitle": kitCmsPageData.page.title|default('') }
+        } %}
+        </div>
+        <script>
+            $('.app-comment-display-form').click(function() {
+                $(this).hide();
+                $('.app-comment-form').fadeIn();
+            });
+        </script>
+        {% render 'KitpagesUserGeneratedBundle:Comment:displayPostList' with {
+            'itemReference': 'page-cms-' ~ kitCmsPage.id
+        } %}
+    </div>
+    {% endif %}
+
+</div>
+<div style="clear:both;"></div>
+{% endblock body %}

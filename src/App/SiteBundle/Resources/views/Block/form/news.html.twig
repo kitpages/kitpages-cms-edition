@@ -1,0 +1,48 @@
+{% extends 'KitpagesCmsBundle:Block:edit.html.twig' %}
+
+{% block editData %}
+
+{{ form_row(
+    form.data.root.html,
+    {'help': 'HTML code inserted at the end of the block.'}
+) }}
+
+{{ form_row(
+    form.data.root.title,
+    {'help' : "Title of the block (title h2)"}
+) }}
+
+{{ form_row(
+    form.data.root.shortContent,
+    {'help' : "content displayed on home"}
+) }}
+
+{{ form_row(
+    form.data.root.date,
+    {'help' : "date of the news (yyyy-mm-dd)"}
+) }}
+
+<div>
+    <label>Image</label>
+    {{ form_widget(form.data.root.media_mainImage) }}
+    {% render 'KitpagesCmsBundle:Block:uploadWidget' with {'blockId':id, 'fieldId': 'form_data_root_media_mainImage', parameterList:{'multi': false, 'publishParent': false} } %}
+</div>
+
+{{ form_row(
+    form.data.root.imagePosition,
+    {'help' : "Indicates where to place the image"}
+) }}
+
+{{ form_row(
+    form.data.root.block_url,
+    {'help' : "link to add on the image and on the title"}
+) }}
+
+{{ form_row(
+    form.data.root.mainContent,
+    {'help' : "Content displayed around the image"}
+) }}
+
+
+{% endblock editData %}
+

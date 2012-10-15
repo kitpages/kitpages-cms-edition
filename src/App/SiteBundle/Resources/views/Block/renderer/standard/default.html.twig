@@ -1,0 +1,85 @@
+{% autoescape false %}
+<div class="app-block-standard [[cms:parameter:firstLastClass]] {{data.root.block_presentation|default('')}}">
+    {% set img = data.media.mainImage.0.default|default('') %}
+    {% set imgPos = data.root.imagePosition|default('top') %}
+
+    {% set youtubeId = data.root.youtubeId|default('') %}
+    {% set youtubePos = data.root.youtubePosition|default('top') %}
+
+    {% set videoBaseUrl = data.root.videoBaseUrl|default('') %}
+    {% set videoPos = data.root.videoPosition|default('top') %}
+
+    {% if (data.root.titleAboveFloat|default('') == "NO") %}
+        {% if (imgPos == "left") or (imgPos == "right") %}
+            {% if img %}
+                {% if data.root.image_url|default('') %}<a href="{{data.root.image_url}}">{% endif %}
+                <img src="{{img.url}}" class="app-block-img app-block-img-position-{{imgPos}}" style="display: block; float: {{imgPos}};"/>
+                {% if data.root.image_url|default('') %}</a>{% endif %}
+            {% endif %}
+        {% endif %}
+
+    {% endif %}
+
+    {% if data.root.title|default('') %}<h2>{{data.root.title}}</h2>{% endif %}
+    {% if data.root.subtitle|default('') %}<h3>{{data.root.subtitle}}</h3>{% endif %}
+
+    {% if (data.root.titleAboveFloat|default('') != "NO") %}
+        {% if (imgPos == "left") or (imgPos == "right") %}
+            {% if img %}
+                {% if data.root.image_url|default('') %}<a href="{{data.root.image_url}}">{% endif %}
+                <img src="{{img.url}}" class="app-block-img app-block-img-position-{{imgPos}}" style="display: block; float: {{imgPos}};"/>
+                {% if data.root.image_url|default('') %}</a>{% endif %}
+            {% endif %}
+        {% endif %}
+
+
+        {% if (videoPos == "left") or (videoPos == "right") %}
+            {% if (videoBaseUrl) %}
+                <div class="app-block-video app-block-img-position-{{imgPos}}" style="display:block; float: {{ videoPos }};">
+                    {% include "AppSiteBundle:Block:renderer/standard/_html5video.html.twig" %}
+                </div>
+            {% endif %}
+        {% endif %}
+
+    {% endif %}
+
+
+    {% if imgPos == "top" %}
+        {% if img %}
+            {% if data.root.image_url|default('') %}<a href="{{data.root.image_url}}">{% endif %}
+            <img class="app-block-img" src="{{img.url}}"/>
+            {% if data.root.image_url|default('') %}</a>{% endif %}
+        {% endif %}
+    {% endif %}
+    {% if imgPos == "center" %}
+        {% if img %}<div style="text-align: center;">
+            {% if data.root.image_url|default('') %}<a href="{{data.root.image_url}}">{% endif %}
+            <img class="app-block-img" src="{{img.url}}"/>
+            {% if data.root.image_url|default('') %}</a>{% endif %}
+        {% endif %}
+    {% endif %}
+
+
+    {% if data.root.mainContent|default('') %}<div>{{data.root.mainContent}}</div>{%endif%}
+
+    {% if ( (imgPos == "left") or (imgPos == "right") ) and (img) %}
+        <div style="clear:{{imgPos}};"></div>
+    {% endif %}
+
+    {% if imgPos == "bottom" %}
+        {% if img %}
+            {% if data.root.image_url|default('') %}<a href="{{data.root.image_url}}">{% endif %}
+            <img class="app-block-img" src="{{img.url}}"/>
+            {% if data.root.image_url|default('') %}</a>{% endif %}
+        {% endif %}
+    {% endif %}
+
+    {% if data.root.subContent|default('') %}<div>{{data.root.subContent}}</div>{%endif%}
+    {% if data.root.code_content|default('') %}
+        <pre{%if data.root.code_language|default('')%} class="{{data.root.code_language}}"{%endif%}>{{data.root.code_content|escape}}</pre>
+    {% endif %}
+
+    {% if data.root.displaySeparator|default('NO') == "YES" %}<div class="app-separator"></div>{% endif %}
+</div>
+{% if data.root.html|default('') %}{{data.root.html}}{% endif %}
+{% endautoescape %}

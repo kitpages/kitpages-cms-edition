@@ -1,0 +1,19 @@
+{% autoescape false %}
+{% set img = data.media.mainImage.0.default|default('') %}
+{% if img %}
+<div class="app-news-img">
+    {% if data.root.block_url|default('') %}<a href="{{data.root.block_url}}">{% endif %}
+    <img src="{{img.url}}" />
+    {% if data.root.block_url|default('') %}</a>{% endif %}
+</div>
+{% endif %}
+<div class="app-block-news">
+    <h3>{% if data.root.title|default('') %}{{data.root.title}}{% endif %}</h3>
+
+    {% if data.root.date|default('') %}
+        <div class="app-news-date">{{data.root.date|kit_strftime("%d %B %Y") }}</div>
+    {% endif %}
+
+    {% if data.root.shortContent|default('') %}<div class="app-news-content">{{data.root.shortContent}}</div>{% endif %}
+</div>
+{% endautoescape %}

@@ -1,0 +1,129 @@
+
+/**
+ * Level 1
+ */
+
+.app-navigation-main {
+    float:left;
+    list-style: none;
+    text-align: left;
+    
+    
+}
+
+.app-navigation-main > li {
+    display: inline-block;
+    position: relative;
+}
+.ie7 .app-navigation-main > li , .ie6 .app-navigation-main > li {
+    display: inline;
+    z-index: 1;
+}
+
+.app-navigation-main > li > a:active,  .app-navigation-main > li > a:visited{
+    color:#1a171c!important;
+}
+
+.app-navigation-main > li > a {
+    display: block;
+    margin:2px 2px 0px 2px;
+    padding: 0px 20px;
+    line-height:40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-decoration: none;
+    color:#1a171c!important;
+}
+.ie7 .app-navigation-main > li > a {
+    line-height:43px;
+    color:#1a171c;
+}
+
+.app-navigation-main > li:hover, .app-navigation-main > li.kit-cms-select {
+    background-color:#E3E3E3;
+}
+
+/**
+ * Navigation level2
+ */
+.app-navigation-level2 ul{
+    padding-left:10px;
+}
+.app-navigation-level2 li{
+    position:relative;
+    padding-left:15px;
+    list-style-type: none;
+}
+/**
+ *
+ */
+.app-navigation-column, .app-navigation-column ul {
+    list-style: none;
+    margin-left: 0px;
+}
+.app-navigation-column {
+    margin-bottom: 20px;
+}
+
+
+/* level 1 */
+.app-navigation-column > li {
+    border-bottom: 1px solid #E3E3E3;
+}
+.app-navigation-column > li.kit-cms-first {
+    border-top: 1px solid #E3E3E3;
+}
+
+.app-navigation-column > li > a {
+    display: block;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    color: #333333;
+
+    text-decoration: none;
+}
+
+.layout-footer-navigation {
+    padding-top:10px;
+    text-align:center;
+}
+
+.app-navigation-footer {
+    display: inline-block;
+    margin-left:300px;
+    text-align:right;
+}
+.kit-cms-navigation-footer > li {
+    display: inline-block;
+    list-style: none;
+}
+.ie7 .kit-cms-navigation-footer > li, .ie6 .kit-cms-navigation-footer > li {
+    display: inline;
+}
+.kit-cms-navigation-footer > li > a {
+    display: block;
+    padding: 4px 25px;
+    border-left: 1px solid #343434;
+
+    font-size: 0.9em;
+
+    color: #343434;
+    text-decoration: none;
+}
+
+.kit-cms-navigation-footer > li.kit-cms-first > a {
+    border: none;
+}
+
+.kit-cms-navigation-footer > li > a:hover {
+    background-color: #E3E3E3;
+}
+
+.kit-cms-navigation-footer > li.kit-cms-select > a {
+    background-color: #E3E3E3;
+}
+
+

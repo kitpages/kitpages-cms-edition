@@ -1,0 +1,24 @@
+{% extends 'KitpagesCmsBundle:Page:layout.html.twig' %}
+
+{% block body %}
+
+<div class="layout-inside-column well">
+    <div class="app-block-contextual">
+        {% render 'KitpagesCmsBundle:Block:widget' with {'slug': languageManager.currentLanguage|default('en') ~ '-contextual'} %}
+    </div>
+
+</div>
+<div class="layout-inside-main">
+    <h1>Actualités</h1>
+    <div class="app-separator"></div>
+    {% render 'KitpagesCmsBundle:Zone:widget' with {
+            'slug': languageManager.currentLanguage|default('en') ~ '-news',
+            'renderer':'default',
+            'paginator':paginator,
+            'authorizedBlockTemplateList':['news']
+        }
+    %}
+
+</div>
+<div style="clear:both;"></div>
+{% endblock body %}

@@ -1,0 +1,34 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+<div class="app-user-connexion app-block-standard app-block-style-black">
+    <h2>{{ ('Login') | trans }}</h2>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form action="{{ path("fos_user_security_check") }}" method="post" id="login">
+        <div>
+            <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        </div>
+
+        <div>
+            <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="password" id="password" name="_password" />
+        </div>
+
+        <div>
+            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="checkbox" id="remember_me" name="_remember_me" checked />
+        </div>
+        <div>
+            <label></label><a href="{{ path('fos_user_resetting_request') }}">{{ 'Forgotten Password'|trans({}, 'FOSUserBundle') }}</a>
+        </div>
+        <br />
+        <input type="hidden" name="_target_path" value="{{targetPath|default('')}}"/>
+        <label></label><input type="submit" class="submit" value="{{ 'I identify'|trans() }}" />
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'KitpagesCmsBundle:Block:edit.html.twig' %}
+
+{% block editData %}
+
+{{ form_row(
+    form.data.root.title,
+    {'help' : "Title of the block (title level 1)"}
+) }}
+
+{{ form_row(
+    form.data.root.subtitle,
+    {'help' : "Sub title of the block (title level 2)"}
+) }}
+
+<div>
+    <label>Télécharger l'image</label>
+    {{ form_widget(form.data.root.media_mainImage) }}
+    {% render 'KitpagesCmsBundle:Block:uploadWidget' with {'blockId':id, 'fieldId': 'form_data_root_media_mainImage', parameterList:{'multi': false, 'publishParent': false} } %}
+    <div class="kit-cms-form-help">access to url in an editor: [[cms:mediaField:mainImage.NUM.default.url]]</div>
+</div>
+
+{{ form_row(
+    form.data.root.imagePosition,
+    {'help' : "Indicates where to place the image"}
+) }}
+
+{{ form_row(
+    form.data.root.titleAboveFloat,
+    {'help' : "For images on the left or on the right, it indicates if the titles are above the image or next to the image"}
+) }}
+
+{{ form_row(
+    form.data.root.image_url,
+    {'help' : "Url to go when a user click on the image"}
+) }}
+
+{{ form_row(
+    form.data.root.mainContent,
+    {'help' : "Content displayed around the image"}
+) }}
+
+{{ form_row(
+    form.data.root.subContent,
+    {'help' : "content displayed under the image"}
+) }}
+
+{{ form_row(
+    form.data.root.block_presentation,
+    {'help' : "add a css => app-block-style-..."}
+) }}
+
+{{ form_row(
+    form.data.root.displaySeparator,
+    {'help' : "do you want to display a line under your content ?"}
+) }}
+
+
+
+{% endblock editData %}
+

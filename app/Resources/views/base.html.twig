@@ -1,0 +1,140 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>{{ kitCmsPageData.root.metaTitle|default(kitMeta.title|default("Kitpages Demo Cms")) }}</title>
+    <meta name="description" content="{{ kitCmsPageData.root.metaDescription|default(kitMeta.description|default("")) }}">
+    <meta name="author" content="{{ kitCmsPageData.root.author|default("") }}">
+    <meta name="keywords" content="{{ kitCmsPageData.root.metaKeywords|default("") }}">
+
+
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=1024">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('boiler/apple-touch-icon.png') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+    <script>window.jQuery || document.write("<script src='{{ asset('boiler/js/libs/jquery-1.6.2.min.js') }}'>\x3C/script>")</script>
+
+    {% block stylesheets %}{% endblock %}
+    {% block kitpages_cms_stylesheets %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+    {% block kitpages_cms_javascripts %}{% endblock %}
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{{ google_analytics_ua }}']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+    {% block kitpages_cms_toolbar %}{% endblock %}
+    <div class="layout-all-document">
+
+            <header>
+               <div class="wrapper">
+                {% set flashNotice = app.session.flash('notice') %}
+                {% if flashNotice %}<div class="layout-flash-notice layout-flash">{{ flashNotice}}</div>{% endif %}
+                {% set flashError = app.session.flash('error') %}
+                {% if flashError %}<div class="layout-flash-error">{% autoescape false %}{{ flashError}}{% endautoescape %}</div>{% endif %}
+                <script>
+                    setTimeout(function() { $('.layout-flash-error').fadeOut(); }, 8000);
+                    setTimeout(function() { $('.layout-flash').fadeOut(); }, 5000);
+                </script>
+                <div class="app-logo-cms">
+                    <a href="/{{languageManager.currentLanguage}}">
+                        <!-- remove spaces for inline-blocks -->
+                        <!-- <img src="{{asset('img/logoCms.jpg')}}" alt="back to home" /> -->
+                        Kitpages CMS
+                    </a>
+                </div>
+                <!--<div class="app-header-intro">
+                    {% render 'KitpagesCmsBundle:Block:widget' with {'slug': languageManager.currentLanguage|default('en') ~ '-header-intro'} %}
+                </div> -->
+                <div class="app-logo-kitpages">
+                    <a href="http://www.kitpages.fr">
+                        <img src="{{asset('img/logo.jpg')}}" alt="back to kitpages.fr"
+                        />
+                    </a>
+                </div>
+
+
+            <nav class="layout-main-navigation" role="navigation">
+                {% block mainNavigation %}
+                    {% render 'KitpagesCmsBundle:Nav:widget' with {
+                        'slug': languageManager.currentLanguage|default('en') ~ '-main',
+                        'cssClass': "app-navigation-main",
+                        'currentPageSlug':kitCmsPage.slug|default(''),
+                        'startDepth':1 ,
+                        'endDepth':1}
+                    %}
+                {% endblock %}
+                   
+                <div class="app-header-language">
+                    <ul>
+                        {% for key, locale in languageManager.localeList %}
+                            <li{% if locale==languageManager.currentLocale%} class="app-langage-selected"{%endif%}><a href="/{{key}}"><img src="{{asset('img/lng/' ~ locale ~ '.jpg')}}" alt="flag" /></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="app-header-connection">
+                    {% if app.user %}
+                        <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+                    {%else%}
+                        <a href="{{ path('fos_user_security_login', {'_target_path': app.request.requestUri} ) }}">Login</a>
+                    {% endif %}
+                </div>
+            </nav>
+                </div>
+            </header>
+            <div class="layout-page">
+            <div class="layout-main" role="main">
+                {% block body %}{% endblock %}
+            </div>
+        </div> <!-- eo #container -->
+        <footer class="layout-footer">
+            <div class="layout-footer-navigation" role="navigation">
+                <div class="app-navigation-footer">
+                {% block footerNavigation %}
+                    {% render 'KitpagesCmsBundle:Nav:widget' with {
+                        'slug': languageManager.currentLanguage|default('en') ~ '-footer',
+                        'cssClass': "kit-cms-navigation-footer",
+                        'currentPageSlug':kitCmsPage.slug|default('')}
+                    %}
+                {% endblock %}
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript">
+        $(function(){
+             $('.submit').addClass('btn');
+             $('.app-navigation-main > li > a').mouseenter(function() {
+                $('.app-navigation-main > li > ul').css('display', 'none');
+                $(this).parent().find('ul').css('display', 'block');
+             });
+
+             $('.app-navigation-main > li').mouseleave(function() {
+             $('.app-navigation-main > li > ul').css('display', 'none');
+            });
+        });
+    </script>
+</body>
+</html>

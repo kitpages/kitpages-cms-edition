@@ -1,0 +1,31 @@
+security:
+    providers:
+        fos_userbundle:
+            id: fos_user.user_manager
+
+    firewalls:
+        main:
+            pattern:      .*
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /user/profile/login
+                use_forward:    false
+                check_path:     /user/profile/login_check
+                failure_path:   null
+                default_target_path: /
+            logout:
+                path:   /user/profile/logout
+                target: /
+            anonymous:    true
+    access_control:
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: .*/admin/.*, role: ROLE_ADMIN }
+        - { path: ^/cms.*, role: ROLE_ADMIN }
+        - { path: /.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER, ROLE_CMS_ADMIN]
+        ROLE_SUPERADMIN: ROLE_ADMIN
+    encoders:
+        "App\UserBundle\Entity\User": sha512
+        "FOS\UserBundle\Model\UserInterface": sha512

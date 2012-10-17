@@ -1,6 +1,3 @@
-KitpagesRedirectBundle:
-    resource: "@KitpagesRedirectBundle/Resources/config/routing.yml"
-    prefix:   /cms/redirect
 app_kit_site:
     resource: "@AppSiteBundle/Resources/config/routing.yml"
 

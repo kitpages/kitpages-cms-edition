@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             new Kitpages\FileSystemBundle\KitpagesFileSystemBundle(),
             new Kitpages\SimpleCacheBundle\KitpagesSimpleCacheBundle(),
             new Kitpages\UtilBundle\KitpagesUtilBundle(),
-            new Kitpages\RedirectBundle\KitpagesRedirectBundle(),
             new Kitpages\CacheControlBundle\KitpagesCacheControlBundle(),
 
             new App\SiteBundle\AppSiteBundle(),

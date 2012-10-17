@@ -7,7 +7,7 @@ app/data/*
 app/sessions/sess_*
 build/
 vendor/
-app/config/parameters.ini
+app/config/parameters.yml
 app/config/kitpages.yml
 *~
 # IDE

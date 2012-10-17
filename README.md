@@ -27,9 +27,6 @@ a) Install the Vendor Libraries
 
 b) Modify parameters.ini
 
-    * run the command:
-        cp app/config/parameters.SAMPLE.ini app/config/parameters.ini
-
     * edit parameters.ini
         modify the database information
         modify base_url
@@ -40,13 +37,6 @@ c) import database
     * run the command:
         php app/console kitCmsDemo:importDatabase
         answers to questions
-
-d) install assets
-
-    * run the command:
-        php app/console assets:install web
-
-
 
 
 2) publish all

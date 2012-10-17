@@ -544,31 +544,6 @@ INSERT INTO `kit_file` VALUES (1,0,'render.jpg',0,'a:0:{}','valid','2012-02-13 1
 UNLOCK TABLES;
 
 --
--- Table structure for table `kit_redirection`
---
-
-DROP TABLE IF EXISTS `kit_redirection`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-CREATE TABLE `kit_redirection` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `source_url` varchar(255) NOT NULL,
-  `destination_url` varchar(255) NOT NULL,
-  `http_code` varchar(5) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-SET character_set_client = @saved_cs_client;
-
---
--- Dumping data for table `kit_redirection`
---
-
-LOCK TABLES `kit_redirection` WRITE;
-/*!40000 ALTER TABLE `kit_redirection` DISABLE KEYS */;
-/*!40000 ALTER TABLE `kit_redirection` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `kit_user`
 --
 

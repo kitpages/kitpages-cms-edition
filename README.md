@@ -3,51 +3,46 @@ Kitpages Cms Edition
 
 This document contains information on how to install KitpagesCms Edition.
 KitpagesCms Edition is based on Symfony Standard edition with additional the bundle to use the kitpages Cms
-A backup of a site demo is also available
 
-    Kitpages bundles added
-    - KitpagesCmsBundle
-    - KitpagesFileBundle
-    - KitpagesCacheControlBundle
-    - KitpagesSimpleCacheBundle
-    - KitpagesRedirectBundle
-    - KitpagesUtilBundle
+## Installation
 
-    Other bundles
-    - DoctrineExtensions
-    - DoctrineExtensionsBundle
-    - FOSUserBundle
+### Install the Vendor Libraries
 
-1) Installation
----------------
+Install Composer and run the following command:
 
-a) Install the Vendor Libraries
-    * Install Composer and run the following command:
-        php composer.phar create-project kitpages/kitpages-cms-edition path/ v2.1.0
+```bash
+php composer.phar create-project kitpages/kitpages-cms-edition path/ v2.1.0
+```
 
-b) Modify parameters.ini
+### Modify parameters.ini
 
-    * edit parameters.ini
-        modify the database information
-        modify base_url
+edit parameters.yml
 
-c) import database
+* modify the database information
+* modify base_url
 
-    * You must create the database.
-    * run the command:
-        php app/console kitCmsDemo:importDatabase
-        answers to questions
+### import database
+
+* You must create the database.
+* run the command:
+
+```bash
+php app/console kitCmsDemo:importDatabase
+```
+
+* answer to the questions
 
 
-2) publish all
------------------------
-    * type the following URL
-        http://example.com/cms/nav/publishAll
+## publish all
 
-    * Sign in
-        login:admin
-        pass:admin
+* type the following URL http://example.com/cms/nav/publishAll
 
+* Sign in
+
+```
+login:admin
+pass:admin
+```
 
 Your website should be accessible on  http://example.com
 

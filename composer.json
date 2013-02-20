@@ -1,6 +1,6 @@
 {
     "name": "kitpages/kitpages-cms-edition",
-    "description": "The \"Kitpages Cms Edition\" distribution",
+    "description": "This is a symfony distribution used ton install easily the KitpagesCmsBundle",
     "keywords": ["cms"],
     "homepage": "https://github.com/kitpages/kitpages-cms-edition",
     "license": "BSD",

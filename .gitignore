@@ -9,6 +9,7 @@ build/
 vendor/
 app/config/parameters.yml
 app/config/kitpages.yml
+composer.lock
 *~
 # IDE
 /nbproject/

@@ -3,18 +3,14 @@
 {% block body %}
 <div class="layout-inside-column">
     <div class="app-block-contextual">
-        {% render 'KitpagesCmsBundle:Block:widget' with {'slug': languageManager.currentLanguage|default('en') ~ '-contextual'} %}
+        {{ render(controller('KitpagesCmsBundle:Block:widget', {'slug': languageManager.currentLanguage|default('en') ~ '-contact-contextual'} )) }}
     </div>
 
 </div>
 <div class="layout-inside-main">
     <h1>Nous contacter</h1>
-    {% render 'KitpagesCmsBundle:Zone:widget' with {'slug': languageManager.currentLanguage|default('en') ~ '-contact-intro'} %}
-    <div class="app-contact-widget app-block-standard app-block-style-black well">
-        {% render "IHQSContactBundle:Contact:form" %}
-    </div>
-
-    {% render 'KitpagesCmsBundle:Zone:widget' with {'slug': languageManager.currentLanguage|default('en') ~ '-contact-body'} %}
+    {{ render(controller('KitpagesCmsBundle:Zone:widget', {'slug': languageManager.currentLanguage|default('en') ~ '-contact-intro'} )) }}
+    {{ render(controller('KitpagesCmsBundle:Zone:widget', {'slug': languageManager.currentLanguage|default('en') ~ '-contact-body'} )) }}
 </div>
 <div style="clear:both;"></div>
 

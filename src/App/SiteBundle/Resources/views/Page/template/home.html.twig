@@ -3,12 +3,12 @@
 {% block body %}
 <div class="layout-home-column well">
     <h2 class="app-news-title">{{ ('News') | trans }}</h2>
-    {% render 'KitpagesCmsBundle:Zone:widget' with {
+    {{ render(controller('KitpagesCmsBundle:Zone:widget', {
         'slug': languageManager.currentLanguage|default('en') ~ '-news',
         'renderer':'news_list',
         'blockDisplayCount':5,
         'authorizedBlockTemplateList':['news']
-    } %}
+    } )) }}
    <div class="app-block-bottom-link">
       <a class="standard-link" href="{{ path('news') }}">&gt; {{ ('See the news') | trans }}</a>
    </div>
@@ -22,7 +22,9 @@ You can change the content of this website by signing in with the account :
 You can also see a <a href="http://www.kitpages.fr/fr/kitpages-cms-bundle-symfony2" target="_blank">4 minutes video presentation in french on kitpages.fr</a> <br/>
 The Kitpages CMS is developped and distributed in opensource as a symfony2 bundle : <a href="https://github.com/kitpages/KitpagesCmsBundle" target="_blank">KitpagesCmsBundle on Github</a>
     </div>
-    {% render 'KitpagesCmsBundle:Page:widgetZone' with {'location_in_page': 'edito', 'page':kitCmsPage} %}
+    {{ render(controller('KitpagesCmsBundle:Page:widgetZone', {
+        'location_in_page': 'edito', 'page':kitCmsPage
+    } )) }}
 </div>
 
 <div style="clear: both;"></div>

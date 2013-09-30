@@ -50,10 +50,20 @@
 
             <header>
                <div class="wrapper">
-                {% set flashNotice = app.session.flash('notice') %}
-                {% if flashNotice %}<div class="layout-flash-notice layout-flash">{{ flashNotice}}</div>{% endif %}
-                {% set flashError = app.session.flash('error') %}
-                {% if flashError %}<div class="layout-flash-error">{% autoescape false %}{{ flashError}}{% endautoescape %}</div>{% endif %}
+                {% if app.session.flashbag.has('notice') %}
+                    <div class="layout-flash-notice layout-flash">
+                        {% for flashMessage in app.session.flashbag.get('notice') %}
+                            {{ flashMessage|raw }} <br/>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if app.session.flashbag.has('error') %}
+                    <div class="layout-flash-error">
+                        {% for flashMessage in app.session.flashbag.get('error') %}
+                            {{ flashMessage|raw }} <br/>
+                        {% endfor %}
+                    </div>
+                {% endif %}
                 <script>
                     setTimeout(function() { $('.layout-flash-error').fadeOut(); }, 8000);
                     setTimeout(function() { $('.layout-flash').fadeOut(); }, 5000);
@@ -66,7 +76,7 @@
                     </a>
                 </div>
                 <!--<div class="app-header-intro">
-                    {% render 'KitpagesCmsBundle:Block:widget' with {'slug': languageManager.currentLanguage|default('en') ~ '-header-intro'} %}
+                    {{ render(controller('KitpagesCmsBundle:Block:widget', {'slug': languageManager.currentLanguage|default('en') ~ '-header-intro'} )) }}
                 </div> -->
                 <div class="app-logo-kitpages">
                     <a href="http://www.kitpages.fr">
@@ -78,13 +88,13 @@
 
             <nav class="layout-main-navigation" role="navigation">
                 {% block mainNavigation %}
-                    {% render 'KitpagesCmsBundle:Nav:widget' with {
+                    {{ render(controller('KitpagesCmsBundle:Nav:widget', {
                         'slug': languageManager.currentLanguage|default('en') ~ '-main',
                         'cssClass': "app-navigation-main",
                         'currentPageSlug':kitCmsPage.slug|default(''),
                         'startDepth':1 ,
-                        'endDepth':1}
-                    %}
+                        'endDepth':1
+                    } )) }}
                 {% endblock %}
                    
                 <div class="app-header-language">
@@ -113,11 +123,11 @@
             <div class="layout-footer-navigation" role="navigation">
                 <div class="app-navigation-footer">
                 {% block footerNavigation %}
-                    {% render 'KitpagesCmsBundle:Nav:widget' with {
+                    {{ render(controller('KitpagesCmsBundle:Nav:widget', {
                         'slug': languageManager.currentLanguage|default('en') ~ '-footer',
                         'cssClass': "kit-cms-navigation-footer",
-                        'currentPageSlug':kitCmsPage.slug|default('')}
-                    %}
+                        'currentPageSlug':kitCmsPage.slug|default('')
+                    } )) }}
                 {% endblock %}
                 </div>
             </div>

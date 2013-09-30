@@ -3,6 +3,7 @@
 
 namespace App\SiteBundle\Controller;
 
+use App\SiteBundle\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Kitpages\CmsBundle\Model\Paginator;
 

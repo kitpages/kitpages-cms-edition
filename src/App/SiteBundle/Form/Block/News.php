@@ -92,7 +92,7 @@ class News extends AbstractType
     }
 
     public function getName() {
-        return 'Standard';
+        return 'AppSiteBlockNews';
     }
 
 }

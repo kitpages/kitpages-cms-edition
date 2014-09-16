@@ -1,3 +1,26 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     3306
+    database_name:     kit_cms_demo
+    database_user:     root
+    database_password:
+
+    mailer_transport:  smtp
+    mailer_host:       localhost
+    mailer_user:
+    mailer_password:
+
+    locale:             en
+
+    secret:             ThisTokenIsNotSoSecretChangeIt
+
+    email_contact:      "email@example.com"
+    email_webmaster:    "email@example.com"
+
+    base_url:           http://example.com
+    google_analytics_ua: "UA-XXXX"
+
 kitpages_cms:
     block:
         template:
@@ -62,10 +85,6 @@ kitpages_file:
 kitpages_file_system:
     file_system_list:
         kitpagesFile:
-#            amazon_s3:
-#                bucket_name: %kitpagesFile_amazons3_bucketname%
-#                key: %kitpagesFile_amazons3_key%
-#                secret_key: %kitpagesFile_amazons3_secretkey%
             local:
                 directory_public: %kernel.root_dir%/../web
                 directory_private: %kernel.root_dir%

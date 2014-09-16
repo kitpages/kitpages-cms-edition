@@ -1,10 +1,10 @@
 {% extends '::base.html.twig' %}
 
-{% block body %}
+{% block kitpages_cms_body %}
 <div class="layout-home-column well">
     <h2 class="app-news-title">{{ ('News') | trans }}</h2>
     {{ render(controller('KitpagesCmsBundle:Zone:widget', {
-        'slug': languageManager.currentLanguage|default('en') ~ '-news',
+        'slug': app.request.locale ~ '-news',
         'renderer':'news_list',
         'blockDisplayCount':5,
         'authorizedBlockTemplateList':['news']
@@ -23,14 +23,20 @@ You can also see a <a href="http://www.kitpages.fr/fr/kitpages-cms-bundle-symfon
 The Kitpages CMS is developped and distributed in opensource as a symfony2 bundle : <a href="https://github.com/kitpages/KitpagesCmsBundle" target="_blank">KitpagesCmsBundle on Github</a>
     </div>
     {{ render(controller('KitpagesCmsBundle:Page:widgetZone', {
-        'location_in_page': 'edito', 'page':kitCmsPage
+        'location_in_page': 'edito', 'page':kitCmsPage, 'title': 'test Title page zone widget'
     } )) }}
 </div>
 
 <div style="clear: both;"></div>
 <br/>
 
-
+    {{ render(controller('KitpagesCmsBundle:Zone:widget', {
+    'slug': app.request.locale ~ '-footer',
+    'title' : 'test Title zone widget',
+    'renderer':'news_list',
+    'blockDisplayCount':5,
+    'authorizedBlockTemplateList':['news']
+    } )) }}
 
 <div style="clear:both;"></div>
-{% endblock body %}
+{% endblock kitpages_cms_body %}

@@ -1,19 +1,26 @@
 default:
     pattern:  /
     defaults: { _controller: AppSiteBundle:Default:index }
-news:
-    pattern:  /{lang}/news
-    defaults: { _controller: AppSiteBundle:Default:newsList, lang: en }
 
+news:
+    pattern:  /{_locale}/news
+    defaults: { _controller: AppSiteBundle:Default:newsList, _locale: en }
+    requirements:
+        _locale: en|fr
 contact_form:
-    pattern:  /{lang}/contact
-    defaults: { _controller: AppSiteBundle:Default:contact }
+    pattern:  /{_locale}/contact
+    defaults: { _controller: AppSiteBundle:Default:contact, _locale: en }
+    requirements:
+        _locale: en|fr
 
 contact_form_send:
-    pattern:  /{lang}/contact-send
-    defaults: { _controller: AppSiteBundle:Default:contactSend }
+    pattern:  /{_locale}/contact-send
+    defaults: { _controller: AppSiteBundle:Default:contactSend, _locale: en }
+    requirements:
+        _locale: en|fr
 
 page_news:
-    pattern:  /{lang}/news/{kitCmsBlockSlug}
-    defaults: { _controller: AppSiteBundle:Default:news, lang: en }
-
+    pattern:  /{_locale}/news/{kitCmsBlockSlug}
+    defaults: { _controller: AppSiteBundle:Default:news, _locale: en }
+    requirements:
+        _locale: en|fr

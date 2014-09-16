@@ -1,7 +1,6 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: kitpages.yml }
 
 framework:
     #esi:             ~
@@ -26,9 +25,6 @@ twig:
         cms:
             type: service
             id: kitpages.cms.model.cmsManager
-        languageManager:
-            type: service
-            id: app_language.manager
         base_url: "%base_url%"
         google_analytics_ua: "%google_analytics_ua%"
     exception_controller:  App\SiteBundle\Controller\ExceptionController::showAction
@@ -105,7 +101,3 @@ fos_user:
     service:
         mailer: fos_user.mailer.default
 
-app_language:
-    locale_list:
-        en: en_US
-        fr: fr_FR

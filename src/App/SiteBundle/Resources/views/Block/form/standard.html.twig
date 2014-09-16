@@ -15,7 +15,8 @@
 <div>
     <label>Télécharger l'image</label>
     {{ form_widget(form.data.root.media_mainImage) }}
-    {{ render(controller('KitpagesCmsBundle:Block:uploadWidget', {'blockId':id, 'fieldId': 'kitpagesCmsEditBlock_data_root_media_mainImage', parameterList:{'multi': false, 'publishParent': false}} )) }}
+
+    {{ render(controller('KitpagesCmsBundle:Block:uploadWidget', {'blockId':id, 'fieldId': 'kitpagesCmsEditBlock_data_root_media_mainImage', parameterList:{'multi': true, 'publishParent': false}} )) }}
     <div class="kit-cms-form-help">access to url in an editor: [[cms:mediaField:mainImage.NUM.default.url]]</div>
 </div>
 

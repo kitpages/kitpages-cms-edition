@@ -12,9 +12,3 @@ kitpages_file:
 app_kit_user:
     resource: "@AppUserBundle/Resources/config/routing.yml"
     prefix: "user"
-
-kitpages_cms_page_view_lang:
-    pattern:  /{lang}/cms/{id}/{urlTitle}
-    defaults: { _controller: KitpagesCmsBundle:Page:view, lang: en }
-    requirements:
-        id: \d+

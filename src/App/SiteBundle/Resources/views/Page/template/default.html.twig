@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
 
-{% block body %}
+{% block kitpages_cms_body %}
 
 <div class="layout-inside-column">
     {% if (kitCmsPageData.page.level > 2 and kitCmsPageData.page.hasChildren) or (kitCmsPageData.page.level > 3) %}
@@ -17,7 +17,7 @@
     {%endif%}
     {{ render(controller('KitpagesCmsBundle:Page:widgetZone', {'location_in_page': 'column', 'page':kitCmsPage} )) }}
     <div class="app-block-contextual">
-        {{ render(controller('KitpagesCmsBundle:Block:widget', {'slug': languageManager.currentLanguage|default('en') ~ '-contextual'} )) }}
+        {{ render(controller('KitpagesCmsBundle:Block:widget', {'slug': app.request.locale ~ '-contextual'} )) }}
     </div>
 </div>
 <div class="layout-inside-main">
@@ -36,4 +36,4 @@
     {{ render(controller('KitpagesCmsBundle:Page:widgetZone', {'location_in_page': 'main', 'page':kitCmsPage} )) }}
 </div>
 <div style="clear:both;"></div>
-{% endblock body %}
+{% endblock kitpages_cms_body %}

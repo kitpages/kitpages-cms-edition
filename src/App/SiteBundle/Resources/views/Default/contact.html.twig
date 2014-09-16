@@ -1,17 +1,17 @@
 {% extends 'KitpagesCmsBundle:Page:layout.html.twig' %}
 
-{% block body %}
+{% block kitpages_cms_body %}
 <div class="layout-inside-column">
     <div class="app-block-contextual">
-        {{ render(controller('KitpagesCmsBundle:Block:widget', {'slug': languageManager.currentLanguage|default('en') ~ '-contact-contextual'} )) }}
+        {{ render(controller('KitpagesCmsBundle:Block:widget', {'slug': app.request.locale ~ '-contact-contextual'} )) }}
     </div>
 
 </div>
 <div class="layout-inside-main">
     <h1>Nous contacter</h1>
-    {{ render(controller('KitpagesCmsBundle:Zone:widget', {'slug': languageManager.currentLanguage|default('en') ~ '-contact-intro'} )) }}
-    {{ render(controller('KitpagesCmsBundle:Zone:widget', {'slug': languageManager.currentLanguage|default('en') ~ '-contact-body'} )) }}
+    {{ render(controller('KitpagesCmsBundle:Zone:widget', {'slug': app.request.locale ~ '-contact-intro'} )) }}
+    {{ render(controller('KitpagesCmsBundle:Zone:widget', {'slug': app.request.locale ~ '-contact-body'} )) }}
 </div>
 <div style="clear:both;"></div>
 
-{% endblock body %}
+{% endblock kitpages_cms_body %}

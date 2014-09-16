@@ -6,14 +6,14 @@ namespace App\SiteBundle\Controller;
 use App\SiteBundle\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Kitpages\CmsBundle\Model\Paginator;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
 
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $languageManager = $this->get("app_language.manager");
-        $currentLanguage = $languageManager->getCurrentLanguage();
+        $currentLanguage = $request->getLocale();
         return $this->redirect('/'.$currentLanguage);
     }
 
@@ -22,14 +22,12 @@ class DefaultController extends Controller
      * Displays a form to create a new Contact entity.
      *
      */
-    public function contactAction()
+    public function contactAction(Request $request)
     {
-
-        $languageManager = $this->get('app_language.manager');
         $em = $this->getDoctrine()->getManager();
         $pageRepository = $em->getRepository('KitpagesCmsBundle:Page');
         $page = $pageRepository->findOneBySlug(
-            $languageManager->getCurrentLanguage().
+            $request->getLocale().
                 '-contact-form'
         );
 
@@ -51,12 +49,10 @@ class DefaultController extends Controller
      * Creates a new Contact entity.
      *
      */
-    public function contactSendAction()
+    public function contactSendAction(Request $request)
     {
-        $request = $this->getRequest();
         $form    = $this->createForm(new ContactType());
         $form->bind($request);
-        $languageManager = $this->get('app_language.manager');
 
         if ($form->isValid()) {
             $data = $form->getData();
@@ -78,14 +74,14 @@ class DefaultController extends Controller
 
 
             $this->get('session')->setFlash('notice', 'Your contact request was successfully sent');
-            return $this->redirect($this->generateUrl('contact_form', array('lang'=>$languageManager->getCurrentLanguage() )));
+            return $this->redirect($this->generateUrl('contact_form', array('_locale'=>$request->getLocale() )));
 
         }
         $this->get('session')->setFlash('notice', 'Erreur, Veuillez nous contactez par email.');
-        return $this->redirect($this->generateUrl('contact_form', array('lang'=>$languageManager->getCurrentLanguage() )));
+        return $this->redirect($this->generateUrl('contact_form', array('_locale'=>$request->getLocale() )));
     }
 
-    public function newsAction($kitCmsBlockSlug)
+    public function newsAction(Request $request, $kitCmsBlockSlug)
     {
         $em = $this->getDoctrine()->getManager();
         $block = $em->getRepository('KitpagesCmsBundle:Block')->findOneBy(array('slug' => $kitCmsBlockSlug));
@@ -102,13 +98,12 @@ class DefaultController extends Controller
         );
     }
 
-    public function newsListAction()
+    public function newsListAction(Request $request)
     {
-        $languageManager = $this->get('app_language.manager');
         $em = $this->getDoctrine()->getManager();
         $pageRepository = $em->getRepository('KitpagesCmsBundle:Page');
         $page = $pageRepository->findOneBySlug(
-            $languageManager->getCurrentLanguage().
+            $request->getLocale().
             '-news'
         );
 
@@ -120,7 +115,7 @@ class DefaultController extends Controller
                 "news",
                 array(
                     'news_page' => '_PAGE_',
-                    'lang' => $languageManager->getCurrentLanguage()
+                    '_locale' => $request->getLocale()
                 )
             )
         );

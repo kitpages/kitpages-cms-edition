@@ -45,7 +45,7 @@ class Standard extends AbstractType
                 )
             )
         );
-        $builder->add('media_mainImage', 'hidden');
+        $builder->add('media_mainImage', 'collection', array('allow_add' => true, 'allow_delete' => true, 'prototype' => true));
 
         $builder->add(
             'imagePosition',

@@ -1,10 +1,10 @@
 {% extends 'KitpagesCmsBundle:Page:layout.html.twig' %}
 
-{% block body %}
+{% block kitpages_cms_body %}
 
 <div class="layout-inside-column well">
     <div class="app-block-contextual">
-        {{ render(controller('KitpagesCmsBundle:Block:widget', {'slug': languageManager.currentLanguage|default('en') ~ '-contextual'} )) }}
+        {{ render(controller('KitpagesCmsBundle:Block:widget', {'slug': app.request.locale ~ '-contextual'} )) }}
     </div>
 
 </div>
@@ -12,7 +12,7 @@
     <h1>Actualités</h1>
     <div class="app-separator"></div>
     {{ render(controller('KitpagesCmsBundle:Zone:widget', {
-        'slug': languageManager.currentLanguage|default('en') ~ '-news',
+        'slug': app.request.locale ~ '-news',
         'renderer':'default',
         'paginator':paginator,
         'authorizedBlockTemplateList':['news']
@@ -20,4 +20,4 @@
 
 </div>
 <div style="clear:both;"></div>
-{% endblock body %}
+{% endblock kitpages_cms_body %}

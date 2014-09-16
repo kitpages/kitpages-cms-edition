@@ -15,11 +15,10 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 
             new Kitpages\CmsBundle\KitpagesCmsBundle(),
@@ -32,7 +31,6 @@ class AppKernel extends Kernel
             new App\SiteBundle\AppSiteBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new App\UserBundle\AppUserBundle(),
-            new App\LanguageBundle\AppLanguageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

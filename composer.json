@@ -35,7 +35,7 @@
         "stof/doctrine-extensions-bundle" : "1.1.*",
         "kitpages/util-bundle": "~3.0",
         "avalanche123/imagine-bundle": "2.1.*",
-        "kitpages/cms-bundle": ">=3.0.3",
+        "kitpages/cms-bundle": "~3.0,>=3.0.3",
         "kitpages/file-system-bundle": "~3.1",
         "kitpages/simple-cache-bundle": "~3.0",
         "kitpages/cache-control-bundle": "2.1.*",

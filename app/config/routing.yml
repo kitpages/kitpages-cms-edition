@@ -1,6 +1,3 @@
-app_kit_site:
-    resource: "@AppSiteBundle/Resources/config/routing.yml"
-
 kitpages_cms:
     resource: "@KitpagesCmsBundle/Resources/config/routing.yml"
     prefix: "cms"
@@ -12,3 +9,7 @@ kitpages_file:
 app_kit_user:
     resource: "@AppUserBundle/Resources/config/routing.yml"
     prefix: "user"
+
+app_kit_site:
+    resource: "@AppSiteBundle/Resources/config/routing.yml"
+

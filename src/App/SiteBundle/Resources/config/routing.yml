@@ -24,3 +24,10 @@ page_news:
     defaults: { _controller: AppSiteBundle:Default:news, _locale: en }
     requirements:
         _locale: en|fr
+
+kitpages_cms_page_view_lang:
+    pattern:  /{_locale}/cms/{id}/{urlTitle}
+    defaults: { _controller: KitpagesCmsBundle:Page:view, _locale: fr }
+    requirements:
+        id: \d+
+        _locale: en|fr
